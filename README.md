@@ -24,7 +24,7 @@ bloom.contains("item2"); /* false */
 
 ```toml
 [dependencies]
-plum="0.1.0"
+plum="0.1.2"
 ```
 
 ## Documentation
