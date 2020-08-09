@@ -1,5 +1,7 @@
 # plum
 
+![Build](https://github.com/distrentic/plum/workflows/Build/badge.svg)
+
 **plum** is an umbrella library for various probabilistic data structures for rust :crab:.
 
 Currently, it only contains a fast standard [bloom filter implementation](https://onatm.dev/2020/08/10/let-s-implement-a-bloom-filter/).
