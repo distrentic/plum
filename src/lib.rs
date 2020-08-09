@@ -20,12 +20,12 @@ use std::marker::PhantomData;
 /// # Example Usage
 ///
 /// ```rust
-/// use plum::{StandardBloomFilter};
+/// use plum::StandardBloomFilter;
 ///
 /// let items_count = 1_000_000;
 /// let fp_rate = 0.01;
 ///
-/// let mut bloom = StandarBloomFilter::new(items_count, fp_rate);
+/// let mut bloom = StandardBloomFilter::new(items_count, fp_rate);
 /// bloom.insert("item1");
 /// bloom.contains("item1"); /* true */
 /// bloom.contains("item2"); /* false */
