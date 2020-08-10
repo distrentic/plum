@@ -4,8 +4,8 @@
 extern crate bit_vec;
 
 use bit_vec::BitVec;
-use std::collections::hash_map::DefaultHasher;
-use std::hash::{Hash, Hasher};
+use std::collections::hash_map::{DefaultHasher, RandomState};
+use std::hash::{BuildHasher, Hash, Hasher};
 use std::marker::PhantomData;
 
 /// A fast standard Bloom Filter implementation that requires only two
@@ -48,7 +48,10 @@ impl<T: ?Sized> StandardBloomFilter<T> {
     pub fn new(items_count: usize, fp_rate: f64) -> Self {
         let optimal_m = Self::bitmap_size(items_count, fp_rate);
         let optimal_k = Self::optimal_k(fp_rate);
-        let hashers = [DefaultHasher::new(), DefaultHasher::new()];
+        let hashers = [
+            RandomState::new().build_hasher(),
+            RandomState::new().build_hasher(),
+        ];
         StandardBloomFilter {
             bitmap: BitVec::from_elem(optimal_m as usize, false),
             optimal_m,
