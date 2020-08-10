@@ -1,6 +1,6 @@
 [package]
 name = "plum"
-version = "0.1.2"
+version = "0.1.3"
 authors = ["onatm <onatmercan@gmail.com>"]
 description = "Probabilistic data structures for rust"
 documentation = "https://docs.rs/plum"
