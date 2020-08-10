@@ -20,3 +20,6 @@ jobs:
         run: cargo build --release
       - name: Test
         run: cargo test
+      - name: Clippy
+        if: startsWith(matrix.os, 'ubuntu')
+        run: cargo clippy
