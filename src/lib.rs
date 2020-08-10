@@ -86,7 +86,7 @@ impl<T: ?Sized> StandardBloomFilter<T> {
         for k_i in 0..self.optimal_k {
             let index = self.get_index(h1, h2, k_i as u64);
 
-            if self.bitmap.get(index).unwrap() == false {
+            if !self.bitmap.get(index).unwrap() {
                 return false;
             }
         }
