@@ -96,7 +96,7 @@ impl<T: ?Sized> StandardBloomFilter<T> {
 
     /// Get the index from hash value of `k_i`.
     fn get_index(&self, h1: u64, h2: u64, k_i: u64) -> usize {
-        (h1.wrapping_add(k_i).wrapping_mul(h2) % self.optimal_m) as usize
+        (h1.wrapping_add((k_i).wrapping_mul(h2)) % self.optimal_m) as usize
     }
 
     /// Calculate the size of `bitmap`.
