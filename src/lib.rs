@@ -150,5 +150,6 @@ mod tests {
         assert!(!bloom.contains("item_2"));
         bloom.insert("item_1");
         assert!(bloom.contains("item_1"));
+        assert!(!bloom.contains("item_2"));
     }
 }
