@@ -34,7 +34,7 @@ use std::marker::PhantomData;
 pub struct StandardBloomFilter<T: ?Sized> {
     bitmap: BitVec,
     /// Size of the bit array.
-    optimal_m: u64,
+    optimal_m: usize,
     /// Number of hash functions.
     optimal_k: u32,
     /// Two hash functions from which k number of hashes are derived.
@@ -96,15 +96,15 @@ impl<T: ?Sized> StandardBloomFilter<T> {
 
     /// Get the index from hash value of `k_i`.
     fn get_index(&self, h1: u64, h2: u64, k_i: u64) -> usize {
-        (h1.wrapping_add((k_i).wrapping_mul(h2)) % self.optimal_m) as usize
+        h1.wrapping_add((k_i).wrapping_mul(h2)) as usize % self.optimal_m
     }
 
     /// Calculate the size of `bitmap`.
     /// The size of bitmap depends on the target false positive probability
     /// and the number of items in the set.
-    fn bitmap_size(items_count: usize, fp_rate: f64) -> u64 {
+    fn bitmap_size(items_count: usize, fp_rate: f64) -> usize {
         let ln2_2 = core::f64::consts::LN_2 * core::f64::consts::LN_2;
-        ((-1.0f64 * items_count as f64 * fp_rate.ln()) / ln2_2).ceil() as u64
+        ((-1.0f64 * items_count as f64 * fp_rate.ln()) / ln2_2).ceil() as usize
     }
 
     /// Calculate the number of hash functions.
