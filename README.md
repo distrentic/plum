@@ -1,6 +1,7 @@
 # plum
 
 ![Build](https://github.com/distrentic/plum/workflows/Build/badge.svg)
+![plum](https://img.shields.io/crates/v/plum.svg)
 
 **plum** is a library of various probabilistic data structures for rust :crab:.
 
